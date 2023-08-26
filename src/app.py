@@ -20,10 +20,10 @@ except Exception as e:
 
 st.markdown('''
 # Credit Risk Model            
-### Am I elligible to apply for a loan?            
+### How risky is my profile when applying for a loan?            
 
-This model is based on [Kaggle's Give Me Some Credit Challenge](!https://www.kaggle.com/competitions/GiveMeSomeCredit), and its goal is to identify
-possible cases of default in loan applicants. Please try answering the questions below to receive a personal risk prediction.
+This model is based on [Kaggle's Give Me Some Credit Challenge](!https://www.kaggle.com/competitions/GiveMeSomeCredit), and its goal is to classify 
+different cases of loan applications in term of payment risks. Please try answering the questions below to receive a risk prediction for you financial profile.
             
 #### User input:
 ''')
@@ -50,21 +50,21 @@ var3_age = st.number_input(
     )
 
 var4_dependent= st.number_input(
-    label='Question 4: how many people are you dependentes (ex: children, elderly).',
+    label='Question 4: how many people financially depend on you (ex: children, elderly)?',
     min_value=0,
     max_value=50,
     value=2
     )
 
 var5_general_loan = st.number_input(
-    label='Question 5: how many general types of loans do you already have?',
+    label='Question 5: how many non-housing related loans (ex: education loan) do you already have?',
     min_value=0,
     max_value=100,
     value=0
     )
 
 var6_mortgage_loan = st.number_input(
-    label='Question 6: how many mortgage types of loan do you already have?',
+    label='Question 6: how many housing related loans (ex: mortgage) do you already have?',
     min_value=0,
     max_value=100,
     value=0
@@ -85,21 +85,21 @@ var8_income= st.number_input(
     )
 
 var9_late_2m = st.number_input(
-    label='Question 9: how many times have previous debts been paid 2 months past due in the last two years?',
+    label='Question 9: within the past two years, how many previous debts were paid after 2 months of due date?',
     min_value=0,
     max_value=99999,
     value=0
     )
 
 var10_late_3m = st.number_input(
-    label='Question 10: how many times have previous debts been paid 3 months past due in the last two years?',
+    label='Question 10: within the past two years, how many previous debts were paid after 3 months of due date?',
     min_value=0,
     max_value=99999,
     value=0
     )
 
 var11_default = st.number_input(
-    label='Question 10: how many times have previous debts been defaulted in the last two years?',
+    label='Question 11: within the past two years, how many previous debts were not paid after 3 months of due date?',
     min_value=0,
     max_value=99999,
     value=0
@@ -146,18 +146,18 @@ if run == True:
         st.balloons()
         text_result = '''
         ##### Congratulations! ✅
-        You are currently elligible for a loan.
+        Your profile is considered low risk (i.e. below 50%).
         '''
     else:
         text_result = '''
         ##### I am sorry ☹️
-        Unfortunately, you are not elligible for a loan at this time.
+        Unfortunately, your profile is considered righ risk (i.e. above 50%).
         '''
     st.markdown(f'#### Prediction')
     #st.write(text_result)
 
     formatted_proba = f'{round(proba * 100, 1)}%'
     col1, col2 = st.columns(2)
-    col1.metric(label="Predicted probability of default:", value=formatted_proba)
+    col1.metric(label="Predicted risk:", value=formatted_proba)
     col2.markdown(text_result)
     style_metric_cards()
