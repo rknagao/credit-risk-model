@@ -1,0 +1,6 @@
+boto3==1.28.21
+numpy==1.22.3
+pandas==2.0.3
+streamlit==1.26.0
+streamlit_extras==0.3.0
+~treamlit==1.14.0
