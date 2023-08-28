@@ -13,10 +13,11 @@ try:
     response = s3.get_object(Bucket=bucket, Key=key)
     artefact = response['Body'].read()#.decode('utf-8')
     model = pickle.loads(artefact)
-    
+    st.write(' Modelo foi carregado com sucesso!')
+
 except Exception as e:
     print(f"Error reading artifact: {e}")
-
+    st.write(' Modelo não foi carregado!')
 
 st.markdown('''
 # Credit Risk Model            
@@ -134,6 +135,10 @@ if run == True:
 
     #st.write(df)
     #st.write(df.shape)
+
+    # Reestructure columns order.
+    list_order = list(model.feature_names_in_)
+    df = df[list_order]
 
     #list_feat = list(df.columns)
     #list_feat.sort()
