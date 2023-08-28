@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import streamlit as st
 from streamlit_extras.metric_cards import style_metric_cards
-import custom_lib as cl
+import src.custom_lib as cl
 
 s3 = boto3.client('s3')
 bucket = 'rafaelk-credit-risk-model'
