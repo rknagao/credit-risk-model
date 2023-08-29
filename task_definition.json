@@ -25,11 +25,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 500,
+      "memory": 800,
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "public.ecr.aws/o0h3s2f6/repo-test:latest",
+      "image": "507155979609.dkr.ecr.us-east-1.amazonaws.com/private-lupi",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -56,9 +56,16 @@
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/task-test:1",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/task-test:3",
   "family": "task-test",
-  "requiresAttributes": [],
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    }
+  ],
   "pidMode": null,
   "requiresCompatibilities": [
     "EC2"
@@ -66,7 +73,7 @@
   "networkMode": null,
   "runtimePlatform": null,
   "cpu": "1024",
-  "revision": 1,
+  "revision": 3,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
