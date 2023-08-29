@@ -1,12 +1,12 @@
 {
   "ipcMode": null,
-  "executionRoleArn": null,
+  "executionRoleArn": "arn:aws:iam::507155979609:role/ecsInstanceRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
       "logConfiguration": null,
-      "entryPoint": null,
+      "entryPoint": [],
       "portMappings": [
         {
           "hostPort": 8501,
@@ -14,7 +14,7 @@
           "containerPort": 8501
         }
       ],
-      "command": null,
+      "command": [],
       "linuxParameters": null,
       "cpu": 0,
       "environment": [],
@@ -25,11 +25,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 800,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 800,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "507155979609.dkr.ecr.us-east-1.amazonaws.com/private-lupi:f4e272fd22af0af649ee83ee1aa345e8f47be147",
+      "image": "507155979609.dkr.ecr.us-east-1.amazonaws.com/private-lupi:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -46,7 +46,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "container-test"
+      "name": "container-dummy"
     }
   ],
   "placementConstraints": [],
@@ -56,14 +56,20 @@
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/task-test:6",
-  "family": "task-test",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/task-definition-dummy:1",
+  "family": "task-definition-dummy",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     }
   ],
   "pidMode": null,
@@ -73,7 +79,7 @@
   "networkMode": null,
   "runtimePlatform": null,
   "cpu": "1024",
-  "revision": 6,
+  "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
