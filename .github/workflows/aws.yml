@@ -92,3 +92,8 @@ jobs:
         #service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
+
+    - name: Ensure usage of latest task definition
+      id: latest-task-def
+      run: aws ecs run-task --cluster $ECS_CLUSTER --task-definition $ECS_TASK_DEFINITION:$IMAGE_TAG
+        
