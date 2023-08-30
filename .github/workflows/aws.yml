@@ -96,9 +96,7 @@ jobs:
     - name: Update running tasks with new task definition
       run: |
         # Get the latest revision of the task definition
-        LATEST_REVISION=$(aws ecs describe-task-definition --task-definition ${{ steps.task-def.outputs.task-definition }} --query 'taskDefinition.revision' --output text)
+        LATEST_REVISION=$(aws ecs describe-task-definition --task-definition task --query 'taskDefinition.revision' --output text)
 
-        # Update the running tasks to use the latest task definition version
-        echo "$(aws ecs list-tasks --cluster $ECS_CLUSTER --query 'taskArns' --output text)"
         done
         
