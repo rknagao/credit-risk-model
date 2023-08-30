@@ -19,6 +19,8 @@ except Exception as e:
     print(f"Error reading artifact: {e}")
     st.write(' Modelo não foi carregado!')
 
+st.write('sanduiche de epa: você abre o pão e fala epa?!')
+
 st.markdown('''
 # Credit Risk Model            
 ### How risky is my profile when applying for a loan?            
