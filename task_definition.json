@@ -46,7 +46,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "container-dummy"
+      "name": "container"
     }
   ],
   "placementConstraints": [],
@@ -56,20 +56,14 @@
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/task-definition-dummy:1",
-  "family": "task-definition-dummy",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:507155979609:task-definition/container:1",
+  "family": "task",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     }
   ],
   "pidMode": null,
