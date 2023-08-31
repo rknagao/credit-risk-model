@@ -21,6 +21,7 @@ except Exception as e:
 
 st.write('sanduiche de epa: você abre o pão e fala epa?!')
 st.write('by Robert Stern, 2017')
+st.write('sanduela de mortandivis somos')
 
 st.markdown('''
 # Credit Risk Model            
