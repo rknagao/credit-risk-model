@@ -37,6 +37,7 @@ env:
   ECS_CLUSTER: cluster-test                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: task_definition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
+  ECS_TASK_FAMILY: task
   CONTAINER_NAME: container           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
@@ -98,9 +99,17 @@ jobs:
         # Get the latest revision of the task definition
         LATEST_REVISION=$(aws ecs describe-task-definition --task-definition task --query 'taskDefinition.revision' --output text)
 
-        # Update the running tasks to use the latest task definition version
-        for task_arn in $(aws ecs list-tasks --cluster $ECS_CLUSTER --query 'taskArns' --output text); do
-          aws ecs update-task-definition --cluster $ECS_CLUSTER --task $task_arn --task-definition task:$LATEST_REVISION
-        done
+        # Get previous active task.
+        ACTIVE_TASK=$(aws ecs list-tasks --cluster $ECS_CLUSTER --desired-status RUNNING --query 'taskArns' --output text)
+        
+        # Stop previous task.
+        aws ecs stop-task --cluster $ECS_CLUSTER --task $ACTIVE_TASK
+
+        # Get active container instance.
+        ACTIVE_INSTANCE=$(aws ecs list-container-instances --cluster $ECS_CLUSTER --query 'containerInstanceArns' --output text)
+        
+        # Restart task with new version.
+        aws ecs start-task --cluster $ECS_CLUSTER --container-instances $ACTIVE_INSTANCE --task-definition $ECS_TASK_FAMILY
+
 
         
