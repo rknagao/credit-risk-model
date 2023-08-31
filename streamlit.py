@@ -20,6 +20,7 @@ except Exception as e:
     #st.write(' Modelo não foi carregado!')
 
 st.write('sanduiche de epa: você abre o pão e fala epa?!')
+st.write('by Robert Stern, 2017')
 
 st.markdown('''
 # Credit Risk Model            
