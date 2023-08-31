@@ -13,11 +13,11 @@ try:
     response = s3.get_object(Bucket=bucket, Key=key)
     artefact = response['Body'].read()#.decode('utf-8')
     model = pickle.loads(artefact)
-    st.write(' Modelo foi carregado com sucesso!')
+    #st.write(' Modelo foi carregado com sucesso!')
 
 except Exception as e:
     print(f"Error reading artifact: {e}")
-    st.write(' Modelo não foi carregado!')
+    #st.write(' Modelo não foi carregado!')
 
 st.write('sanduiche de epa: você abre o pão e fala epa?!')
 
